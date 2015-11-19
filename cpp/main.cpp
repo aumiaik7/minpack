@@ -3,6 +3,7 @@
 using namespace std;
 #include "valder.h"
 
+
 int main()
 {
   /*Time t1(10, 50, 59);
@@ -19,14 +20,21 @@ int main()
 
   
 
+
    valder u,v,w,x;
+   double der1[] = {1,0,0};
+   double der2[] = {0,1,0};
+   double der3[] = {0,0,1};
 
    u.val = 20;
-   u.der = {1,0,0};
+   u.der= vector<double>(der1, der1 + sizeof(der1) / sizeof(der1[0]) );
+//u.der[0] =1;
+//w = sin(v);
    v.val = 10;
-   // v.der = {0,1,0};
-   w = u+v;
-   cout << w.der[0] <<endl;
+   v.der = vector<double>(der2, der2 + sizeof(der2) / sizeof(der2[0]) );
+   x = 20 + u;
+w = v-u;
+   cout <<"U der: "<< w.der[0]<<" V der: "<<w.der[1] <<endl;
    
   
     return 0;

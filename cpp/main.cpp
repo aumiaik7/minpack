@@ -18,12 +18,16 @@ int main()
      cout << "Two objects are not equal\n";*/
 
   
-    valder v;
-    std::vector<double> x;
-    std::vector<double> y;
-    x.push_back(10);  
-    y.push_back(10);
-    v.add(x,y);
+
+   valder u,v,w,x;
+
+   u.val = 20;
+   u.der = {1,0,0};
+   v.val = 10;
+   // v.der = {0,1,0};
+   w = u+v;
+   cout << w.der[0] <<endl;
+   
   
-     return 0;
+    return 0;
 }

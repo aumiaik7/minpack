@@ -14,7 +14,7 @@ using namespace std;
    return 2;
    }*/
 
-// + overload when both of them are valder objet
+// (+) overload when both of them are valder objet
 valder operator+(valder u, valder v)
 {
 
@@ -31,7 +31,7 @@ valder operator+(valder u, valder v)
   return w;
 }
 
-// + overload when v is scalar
+// (+) overload when v is scalar
 valder operator+(valder u, double v)
 {
   valder w;
@@ -48,7 +48,7 @@ valder operator+(valder u, double v)
   return w;
 }
 
-// + overload when u is scalar
+// (+) overload when u is scalar
 valder operator+(double u,valder v)
 {
   valder w;
@@ -77,7 +77,7 @@ valder operator-(valder u)
   
 }
 
-// - overload when both of them are valder objet
+// (-) overload when both of them are valder objet
 valder operator-(valder u, valder v)
 {
 
@@ -111,7 +111,7 @@ valder operator-(valder u, double v)
   return w;
 }
 
-// - overload when u is scalar
+// (-) overload when u is scalar
 valder operator-(double u,valder v)
 {
   valder w;
@@ -126,14 +126,243 @@ valder operator-(double u,valder v)
 }
 
 
-valder sin(valder u)
+//  (*) overload when both of them are valder objet
+valder operator*(valder u, valder v)
 {
-  valder w;
 
-  cout <<sin(2)<<endl;
+  valder w;
+  w.val = u.val*v.val;
+  w.der = vector<double>(u.der.size());
+
+  for(int i = 0; i < u.der.size(); i++)
+  {	
+     w.der[i] = u.der[i]*v.val + u.val*v.der[i];
+  }
+      
 
   return w;
 }
+
+// (*) overload when v is scalar
+valder operator*(valder u, double v)
+{
+  valder w;
+  w.val = v*u.val;
+  w.der = vector<double>(u.der.size());
+
+  for(int i = 0; i < u.der.size(); i++)
+  {	
+    w.der[i] = v*u.der[i] ;
+
+  }
+
+  //w.der = u.der;
+  return w;
+}
+
+// (*) overload when u is scalar
+valder operator*(double u,valder v)
+{
+  valder w;
+  w.val = u*v.val;
+  w.der = vector<double>(v.der.size());
+  for(int i = 0; i < v.der.size(); i++)
+  {	
+    w.der[i] = u*v.der[i] ;
+  }
+      //w.der = v.der;
+  return w;
+}
+
+// (/) overload when both of them are valder objet
+valder operator/(valder u, valder v)
+{
+
+  valder w;
+  w.val = u.val/v.val;
+  w.der = vector<double>(u.der.size());
+
+  for(int i = 0; i < u.der.size(); i++)
+  {	
+     w.der[i] = (u.der[i]*v.val-u.val*v.der[i])/pow(v.val,2);
+  }
+      
+
+  return w;
+}
+
+// (/) overload when v is scalar
+valder operator/(valder u, double v)
+{
+  valder w;
+  w.val = u.val/v;
+  w.der = vector<double>(u.der.size());
+
+  for(int i = 0; i < u.der.size(); i++)
+  {	
+    w.der[i] = u.der[i]/v;
+
+  }
+
+  //w.der = u.der;
+  return w;
+}
+
+// (/) overload when u is scalar
+valder operator/(double u,valder v)
+{
+  valder w;
+  w.val = u/v.val;
+  w.der = vector<double>(v.der.size());
+  for(int i = 0; i < v.der.size(); i++)
+  {	
+     w.der[i] = (-u*v.der[i])/pow(v.val,2) ;
+  }
+      //w.der = v.der;
+  return w;
+}
+
+// (^) overload when both of them are valder objet
+valder operator^(valder u, valder v)
+{
+
+  valder w;
+  //w.der = vector<double>(u.der.size());
+  w = exp(v*log(u));
+  
+/*
+
+  for(int i = 0; i < u.der.size(); i++)
+  {	
+     w.der[i] = (u.der[i]*v.val-u.val*v.der[i])/pow(v.val,2);
+  }
+*/    
+
+  return w;
+}
+
+// (^) overload when v is scalar
+valder operator^(valder u, double v)
+{
+  valder w;
+  w.val = pow(u.val,v);
+  w.der = vector<double>(u.der.size());
+
+  for(int i = 0; i < u.der.size(); i++)
+  {	
+     w.der[i] = v*pow(u.val,(v-1))*u.der[i];
+  }  
+  //w.der = u.der;
+  return w;
+}
+
+// (^) overload when u is scalar
+valder operator^(double u,valder v)
+{
+  valder w;
+  w.val = pow(u,v.val);
+  w.der = vector<double>(v.der.size());
+  for(int i = 0; i < v.der.size(); i++)
+  {
+    w.der[i] = pow(u,v.val)*log(u)*v.der[i] ;
+  }
+      //w.der = v.der;
+  return w;
+}
+
+// (log) overload
+valder log(valder u)
+{
+   valder w;
+   w.val = log(u.val);
+
+   w.der = vector<double>(u.der.size());
+   for(int i = 0; i < u.der.size(); i++)
+   {
+      w.der[i] = (1/u.val)*u.der[i] ;
+   }
+
+   return w;
+}
+
+// (exp) overload 
+valder exp(valder u)
+{
+   valder w;
+   w.val = exp(u.val);
+
+   w.der = vector<double>(u.der.size());
+   for(int i = 0; i < u.der.size(); i++)
+   {
+     w.der[i] = exp(u.val)*u.der[i] ;
+   }
+   
+   
+   return w;
+}
+
+// (sqrt) overload
+valder sqrt(valder u)
+{
+   valder w;
+   w.val = sqrt(u.val);
+
+   w.der = vector<double>(u.der.size());
+   for(int i = 0; i < u.der.size(); i++)
+   {
+      w.der[i] = u.der[i]/(2*sqrt(u.val)) ;
+   }
+   
+   
+   return w;
+}
+
+// (sin) overload
+valder sin(valder u)
+{
+   valder w;
+   w.val = sin(u.val);
+
+   w.der = vector<double>(u.der.size());
+   for(int i = 0; i < u.der.size(); i++)
+   {
+      w.der[i] = cos(u.val)*u.der[i] ;
+   }
+
+   return w;
+}
+
+// (cos) overload
+valder cos(valder u)
+{
+   valder w;
+   w.val = cos(u.val);
+
+   w.der = vector<double>(u.der.size());
+   for(int i = 0; i < u.der.size(); i++)
+   {
+      w.der[i] = -sin(u.val)*u.der[i] ;
+   }
+
+   return w;
+}
+
+// (tan) overload
+valder tan(valder u)
+{
+   valder w;
+   w.val = tan(u.val);
+
+   w.der = vector<double>(u.der.size());
+   for(int i = 0; i < u.der.size(); i++)
+   {
+      w.der[i] = (1/pow(cos(u.val),2))*u.der[i] ;
+   }
+
+   return w;
+}
+
+
 /*
    valder operator+(double u, valder v)
    {

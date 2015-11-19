@@ -22,7 +22,6 @@ class valder
 	     }*/
 	  
 };
-valder sin(valder u);
 
 valder operator+(valder u, valder v);
 valder operator+(valder u, double v);
@@ -33,6 +32,25 @@ valder operator-(valder u);
 valder operator-(valder u, valder v);
 valder operator-(valder u, double v);
 valder operator-(double u,valder v);
+
+valder operator*(valder u, valder v);
+valder operator*(valder u, double v);
+valder operator*(double u,valder v);
+
+valder operator/(valder u, valder v);
+valder operator/(valder u, double v);
+valder operator/(double u,valder v);
+
+valder operator^(valder u, valder v);
+valder operator^(valder u, double v);
+valder operator^(double u,valder v);
+
+valder exp(valder u);
+valder log(valder u);
+valder sqrt(valder u);
+valder sin(valder u);
+valder cos(valder u);
+valder tan(valder u);
 
  
 #endif

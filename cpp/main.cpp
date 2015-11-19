@@ -1,3 +1,5 @@
+//main.cpp
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -26,14 +28,14 @@ int main()
    double der2[] = {0,1,0};
    double der3[] = {0,0,1};
 
-   u.val = 20;
+   u.val = 2;
    u.der= vector<double>(der1, der1 + sizeof(der1) / sizeof(der1[0]) );
 //u.der[0] =1;
 //w = sin(v);
-   v.val = 10;
+   v.val = 3;
    v.der = vector<double>(der2, der2 + sizeof(der2) / sizeof(der2[0]) );
-   x = 20 + u;
-w = v-u;
+   //x = 20 + u+v;
+   w = tan(u);
    cout <<"U der: "<< w.der[0]<<" V der: "<<w.der[1] <<endl;
    
   

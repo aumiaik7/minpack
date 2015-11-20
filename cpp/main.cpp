@@ -23,20 +23,27 @@ int main()
   
 
 
-   valder u,v,w,x;
+  valder u,v,w,rad,tana,vhor,f;
    double der1[] = {1,0,0};
    double der2[] = {0,1,0};
    double der3[] = {0,0,1};
 
-   u.val = 2;
+   u.val = 20;
    u.der= vector<double>(der1, der1 + sizeof(der1) / sizeof(der1[0]) );
 //u.der[0] =1;
 //w = sin(v);
-   v.val = 3;
+   v.val = 44;
    v.der = vector<double>(der2, der2 + sizeof(der2) / sizeof(der2[0]) );
-   //x = 20 + u+v;
-   w = tan(u);
-   cout <<"U der: "<< w.der[0]<<" V der: "<<w.der[1] <<endl;
+
+   w.val = 9;
+   w.der = vector<double>(der3, der3 + sizeof(der3) / sizeof(der3[0]) );
+   rad = u*3.1416/180;
+   tana = tan(rad);
+   vhor = (v*cos(rad))^2;
+   f = (vhor/32)*(tana + sqrt((tana^2)+64*w/vhor));
+   // f = (u^2)+(v^2)+(w^2);
+   
+ cout <<"F val: "<< f.val <<" U der: "<< f.der[0]<<" V der: "<<f.der[1] << " W der: "<< f.der[2] <<endl;
    
   
     return 0;

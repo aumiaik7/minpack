@@ -356,7 +356,7 @@ valder tan(valder u)
    w.der = vector<double>(u.der.size());
    for(int i = 0; i < u.der.size(); i++)
    {
-      w.der[i] = (1/pow(cos(u.val),2))*u.der[i] ;
+     w.der[i] = pow(1/ cos(u.val),2)*u.der[i] ;
    }
 
    return w;

@@ -39,9 +39,9 @@ end
 function [fvec,J] = jensam(m,a)
 values=zeros(m,3);
 x=valder(a(1),[1 0]);
-y=valder(a(2),[1 0]);
+y=valder(a(2),[0 1]);
 for i=1:m
-	v0(i)=2*i;
+	v0(i)=2*i
 	v1(i)=i*x;
 	v2(i)=i*y;
 	v3(i)=exp(v1(i));

@@ -28,7 +28,7 @@ int main()
       v2.val = x2;
       v2.der = vector<double>(der2, der2 + sizeof(der2) / sizeof(der2[0]) );
 
-      v3 = v1^2;
+      v3 = pow(v1,2);
       v4 = v2-v3;
       f1 = 10*v4;
       f2 = 1-v1;
@@ -36,10 +36,10 @@ int main()
       cout<<"F :"<<endl << f1.val<<" "<<f2.val<<endl;
       cout<<"J: "<<endl;
       for(int i=0; i<f1.der.size(); i++ )
-	cout<<setw(15) << left<<f1.der[i]<<" ";
+	cout<<setw(10) << left<<f1.der[i]<<" ";
       cout<< endl;
       for(int i=0; i<f2.der.size(); i++ )
-	cout<<setw(15) << left<<f2.der[i]<<" ";
+	cout<<setw(10) << left<<f2.der[i]<<" ";
       cout<< endl;
   
     return 0;

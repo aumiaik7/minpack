@@ -41,9 +41,10 @@ valder operator/(valder u, valder v);
 valder operator/(valder u, double v);
 valder operator/(double u,valder v);
 
-valder operator^(valder u, valder v);
-valder operator^(valder u, double v);
-valder operator^(double u,valder v);
+valder pow(valder u, valder v);
+valder pow(valder u, double v);
+valder pow(double u,valder v);
+
 
 valder exp(valder u);
 valder log(valder u);

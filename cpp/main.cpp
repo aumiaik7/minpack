@@ -47,11 +47,11 @@ int main()
    v_1 = v;
    v0 = h;
 
-   v1 = v_1^2;
+   v1 =pow( v_1,2);
    cout << "Derivative: "<<v1.der[0]<<endl;
    v2 = cos(v_2);
    cout << "Derivative: "<<v2.der[0]<<endl;
-   v3 = v2^2;
+   v3 = pow(v2,2);
    cout << "Derivative: "<<v3.der[0]<<endl;
    v4 = v1*v3;
    cout << "Derivative: "<<v4.der[0]<<endl;
@@ -59,7 +59,7 @@ int main()
    cout << "Derivative: "<<v5.der[0]<<endl;
    v6 = tan(v_2);
    cout << "Derivative: "<<v6.der[0]<<endl;
-   v7 = v6^2;
+   v7 = pow(v6,2);
    cout << "Derivative: "<<v7.der[0]<<endl;
    v8 = 64*v0;
    cout << "Derivative: "<<v8.der[0]<<endl;
@@ -73,7 +73,7 @@ int main()
    cout << "Derivative: "<<v12.der[0]<<endl;
    v13 = v5*v12;
    cout << "Derivative: "<<v13.der[0]<<endl;
- cout <<"F val: "<< v13.val <<" U der: "<< v13.der[0]<<" V der: "<<v13.der[1] << " W der: "<< v13.der[2] <<endl;
+   cout <<"F val: "<< v13.val <<" U der: "<< v13.der[0]<<" V der: "<<v13.der[1] << " W der: "<< v13.der[2] <<endl;
    
   
     return 0;

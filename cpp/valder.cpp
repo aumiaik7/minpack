@@ -223,7 +223,7 @@ valder operator/(double u,valder v)
 }
 
 // (^) overload when both of them are valder objet
-valder operator^(valder u, valder v)
+valder pow(valder u, valder v)
 {
 
   valder w;
@@ -242,7 +242,7 @@ valder operator^(valder u, valder v)
 }
 
 // (^) overload when v is scalar
-valder operator^(valder u, double v)
+valder pow(valder u, double v)
 {
   valder w;
   w.val = pow(u.val,v);
@@ -257,7 +257,7 @@ valder operator^(valder u, double v)
 }
 
 // (^) overload when u is scalar
-valder operator^(double u,valder v)
+valder pow(double u,valder v)
 {
   valder w;
   w.val = pow(u,v.val);
@@ -270,6 +270,15 @@ valder operator^(double u,valder v)
   return w;
 }
 
+// (^) overload when u and v are scalar
+/*double operator^(double u,double v)
+{
+  double w;
+  w = pow(u,v);
+ 
+  return w;
+}
+*/
 // (log) overload
 valder log(valder u)
 {

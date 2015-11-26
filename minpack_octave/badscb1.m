@@ -33,8 +33,4 @@ v3=x*y
 f1 = v1-10^6;
 f2 = v2-(2e-6);
 f3 = v3-2;
-values = [double(f1); double(f2); double(f3)];
-F = values(:,1)
-
-
 

@@ -1,4 +1,4 @@
-function [fvec,J] = biggs(n,m,x,opt)
+%function [fvec,J] = biggs(n,m,x,opt)
 
 % ******************************************
 %  function [fvec,J] = biggs(n,m,x,opt)
@@ -10,6 +10,7 @@ function [fvec,J] = biggs(n,m,x,opt)
 %
 %  Revised  11/94               PLK
 % ******************************************
+%{
 J=zeros(m,n);
 
 for i = 1:m
@@ -37,4 +38,39 @@ fvec=fvec';
 if((opt<1) | (opt>3))
         disp('Error: Option value sent to BIGGS.M is either <1 or >3');
 end;
-
+%}function [fvec,J] = biggs1(m,a)
+values=zeros(m,7);
+x1=valder(a(1),[1 0 0 0 0 0]);
+x2=valder(a(2),[0 1 0 0 0 0]);
+x3=valder(a(3),[0 0 1 0 0 0]);
+x4=valder(a(4),[0 0 0 1 0 0]);
+x5=valder(a(5),[0 0 0 0 1 0]);
+x6=valder(a(6),[0 0 0 0 0 1]);
+for i = 1:m
+        t(i) = .1*i;
+	t1(i)= -t(i);
+	t2(i)= 10*t1(i);
+	t3(i)= 4*t1(i);
+	t4(i)= exp(t2(i));
+	t5(i)= exp(t3(i));
+	t6(i)= exp(t1(i));
+	t7(i)= 5*t4(i);
+	t8(i)= 3*t5(i);
+	t9(i)= t6(i)-t7(i);
+	y(i) = t9(i)+t8(i);
+	t10(i) = x1*t1(i);
+	t11(i) = x2*t1(i);
+	t12(i) = x5*t1(i);
+	t13(i)= exp(t10(i));
+	t14(i)= exp(t11(i));
+	t15(i)= exp(t12(i));
+	t16(i) = x3*t13(i);
+	t17(i) = x4*t14(i);
+	t18(i) = x6*t15(i);
+	t19(i)= t16(i)-t17(i);
+	t20(i) = t19(i)+t18(i);
+	f(i) = t20(i)-y(i);
+  	values(i,:) = [double(f(i))];
+end
+F = values(:,1)
+J = values(:,2:7)

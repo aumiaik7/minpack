@@ -40,8 +40,8 @@ end;
 	x1=valder(a(1),[1 0 0]);
 	x2=valder(a(2),[0 1 0]);
 	x3=valder(a(3),[0 0 1]);
-	for i = 1:m
 
+	for i = 1:m
   		t(i) = .1*i;
 		v1(i) = -t(i);
 		v2(i)= v1(i)*x1;
@@ -54,6 +54,8 @@ end;
 		v9(i) = v6(i)-v8(i);
 		v10(i)= x3*v9(i);
 		v11(i)=v3(i)-v5(i);
-     		fvec(i) =  v11(i)-v10(i);
+     		f(i) =  v11(i)-v10(i);
+		values(i,:) = [double(f(i))];
   	end;
-fvec=fvec'
+F = values(:,1)
+J = values(:,2:4)

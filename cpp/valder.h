@@ -52,6 +52,8 @@ valder sqrt(valder u);
 valder sin(valder u);
 valder cos(valder u);
 valder tan(valder u);
+valder asin(valder u);
+valder atan(valder u);
 
- 
+valder abs(valder u); 
 #endif

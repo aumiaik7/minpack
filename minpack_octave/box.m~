@@ -37,11 +37,11 @@ end;
 %}
 function [fvec,J] = box(m,a)
 	values=zeros(m,4);
-	x1=a(1);
-	x2=a(2);
-	x3=a(3);
-	for i = 1:m
+	x1=valder(a(1),[1 0 0]);
+	x2=valder(a(2),[0 1 0]);
+	x3=valder(a(3),[0 0 1]);
 
+	for i = 1:m
   		t(i) = .1*i;
 		v1(i) = -t(i);
 		v2(i)= v1(i)*x1;
@@ -55,5 +55,7 @@ end;
 		v10(i)= x3*v9(i);
 		v11(i)=v3(i)-v5(i);
      		fvec(i) =  v11(i)-v10(i);
+		values(i,:) = [double(f(i))];
   	end;
-fvec=fvec'
+F = values(:,1)
+J = values(:,2:4)

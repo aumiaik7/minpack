@@ -35,7 +35,7 @@ if((opt<1)|(opt>3))
         disp('Error: Option value sent to  BOX.M is either <1 or >3');
 end;
 %}
-function [fvec,J] = box(m,a)
+function [fvec,J] = box1(m,a)
 	values=zeros(m,4);
 	x1=a(1);
 	x2=a(2);

@@ -1,0 +1,114 @@
+//biggs.cpp
+/*
+% ****************************************************
+% ****************************************************
+%  Biggs EXP6 function   [18]
+%  Dimensions :  n=6,  m=13
+%  Standard starting point (1,2,1,1,1,1)
+%  Minima of f=5.65565...10^(-3)   if m=13
+%            f=0 at (1,10,1,5,4,3)
+%
+%
+*/
+#include <iostream>
+#include <vector>
+#include <iomanip> 
+#include <cmath> 
+#include "valder.h"
+using namespace std;
+
+
+
+int main()
+{
+	  
+	double x1,x2,x3,x4,x5,x6;
+	
+	
+	
+	int m ;
+	cout<<"Enter value m:";
+      	cin >> m;
+
+	cout<<"Enter values for x1 x2 x3 x4 x5 and x6:";
+      	cin >> x1 >> x2 >> x3 >> x4 >> x5 >> x6;
+
+
+
+      	valder a1,a2,a3,a4,a5,a6,t10[m],t11[m],t12[m],t13[m],t14[m],t15[m],t16[m],t17[m],t18[m],t19[m],t20[m],f[m];
+	
+      	double der1[] = {1,0,0,0,0,0};
+      	double der2[] = {0,1,0,0,0,0};
+	double der3[] = {0,0,1,0,0,0};
+      	double der4[] = {0,0,0,1,0,0};
+	double der5[] = {0,0,0,0,1,0};
+	double der6[] = {0,0,0,0,0,1};
+	
+
+	a1.val = x1;
+	a1.der= vector<double>(der1, der1 + sizeof(der1) / sizeof(der1[0]) );
+
+	a2.val = x2;
+      	a2.der = vector<double>(der2, der2 + sizeof(der2) / sizeof(der2[0]) );
+	
+	a3.val = x3;
+	a3.der = vector<double>(der3, der3 + sizeof(der3) / sizeof(der3[0]) );
+
+	a4.val = x4;
+      	a4.der = vector<double>(der4, der4 + sizeof(der4) / sizeof(der4[0]) );
+
+	a5.val = x5;
+      	a5.der = vector<double>(der5, der5 + sizeof(der5) / sizeof(der5[0]) );
+      
+	a6.val = x6;
+      	a6.der = vector<double>(der6, der6 + sizeof(der6) / sizeof(der6[0]) );
+
+	double ti,t1,t2,t3,t4,t5,t6,t7,t8,t9,yi;
+	double two = 2.0, point2 = 0.2;
+	for(int i = 1 ; i <= m ; i++)
+	{
+		
+		ti = 0.1*i;
+		t1 = -ti;
+		t2 = 10*t1;
+		t3 = 4*t1;
+		t4= exp(t2);
+		t5= exp(t3);
+		t6= exp(t1);
+		t7= 5*t4;
+		t8= 3*t5;
+		t9= t6-t7;
+		yi = t9+t8;
+		t10[i-1] = a1*t1;
+		t11[i-1] = a2*t1;
+		t12[i-1] = a5*t1;
+		t13[i-1]= exp(t10[i-1]);
+		t14[i-1]= exp(t11[i-1]);
+		t15[i-1]= exp(t12[i-1]);
+		t16[i-1] = a3*t13[i-1];
+		t17[i-1] = a4*t14[i-1];
+		t18[i-1] = a6*t15[i-1];
+		t19[i-1]= t16[i-1]-t17[i-1];
+		t20[i-1] = t19[i-1]+t18[i-1];
+		f[i-1] = t20[i-1]-yi;
+		
+	}
+   
+	cout<<"F :"<<endl;
+	for(int i = 0; i < m; i++)
+	      	cout<<f[i].val<<endl;
+	
+      	cout<<endl<<"J: "<<endl;
+
+      	for(int i = 0; i < m; i++)
+	{	
+		for(int j=0; j<f[i].der.size(); j++ )
+		{	cout<<setw(15) << left<<f[i].der[j]<<" ";
+		}
+	     	cout<< endl;
+	}      
+  
+    	return 0;
+}
+
+

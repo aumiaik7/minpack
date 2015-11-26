@@ -13,7 +13,7 @@ function [fvec,J] = meyer(n,m,x,opt)
 %
 % Revised 10/23/94      PLK
 % ************************************************
-
+%{
 
       zero = 0.d0;
       one = 1.d0;
@@ -78,7 +78,7 @@ J
         disp('Error: Option value sent to MEYER.M is either <1 or >3');
      end;
 
-%{
+%}
 function [fvec,J] = meyer(a)
 
 zero = 0.d0;
@@ -117,4 +117,4 @@ for i = 1: 16
 end;
 F = values(:,1)
 J = values(:,2:4)
-%}
+

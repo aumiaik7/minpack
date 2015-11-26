@@ -25,7 +25,7 @@
 %
 
 
-function [F,J] = badscb(a)x = a(1);
+function [F,J] = badscb1(a)x = a(1);
 y = a(2);
 v1=x
 v2=y

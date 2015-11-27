@@ -47,8 +47,13 @@ classdef valder
 %
      function h = abs(u)
           sprintf('**  abs   **')
+	for i=1:size(u)
+		u.val(i)=abs(u.val(i));
+		u.der(i)=abs(u.der(i));
+	end
          %VALDER/abs overloads abs with a valder object argument
-	 h = valder(abs(u.val), abs(u.der));
+	 h = valder(u.val, u.der);
+	% h = valder(abs(u.val), abs(u.der));
       end
 %
       function h = minus(u,v)

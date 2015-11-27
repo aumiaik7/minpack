@@ -54,7 +54,7 @@ int main()
 		cx[i]  = cos(x1[i]);
 		sum1  = sum1 + cx[i];
 	}
-	v=n-sum1;
+	v = n-sum1;
 	for(int i=1; i<=m ; i++)
 	{
 		x1[i] = a[i];

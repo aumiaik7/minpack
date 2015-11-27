@@ -31,7 +31,7 @@ int main()
 	{
 		cin >> val;
 		a[i].val = val; 
-		derMaker(der,i+1,n);
+		derMaker(der,i,n);
 		a[i].der= vector<double>(der, der + sizeof(der) / sizeof(der[0]) );
 		
 	}
@@ -54,7 +54,7 @@ int main()
 		cx[i]  = cos(x1[i]);
 		sum1  = sum1 + cx[i];
 	}
-	v=n-sum1;
+	v = n-sum1;
 	for(int i=1; i<=m ; i++)
 	{
 		x1[i] = a[i];

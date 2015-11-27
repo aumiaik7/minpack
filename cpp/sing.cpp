@@ -35,7 +35,7 @@ int main()
 
 
 
-      	valder a1,a2,a3,a4,v1,v2,v4,v4,v6,v7,f1,f2,f3,f4;
+      	valder a1,a2,a3,a4,v1,v2,v4,v5,v6,v7,f1,f2,f3,f4;
 	int vali;
       	double der1[] = {1,0,0,0};
       	double der2[] = {0,1,0,0};

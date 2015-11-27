@@ -1,21 +1,17 @@
-//helix.cpp
+//wood.cpp
 
 /*
 % *******************************************
 % *******************************************
-% function [ fvec, J]= helix(n,m,x,opt)
-%
-% Helical valley function  [7]
-% Dimensions    n=3,   m=3
+% Wood function    [14] 
+% Dimensions:     n=4   m=6
 % Function Definition:
-%       f1(x) = 10[x3 - 10*(x1,x2)]
-%       f2(x) = 10[((x1)^2 + (x2)^2)^.5 -1]
-%       f3(x) = x3
-% Standard starting point  x= (-1,0,0)
-% Minima of f=0 at (1,0,0)
-%
-% Revised 10/23/94   PLK
-% *********************************************
+%       f1(x)= 10(x2 -x1^2)
+%       f2(x)= 1 - x1
+%       f3(x)= (90)^.5*(x4-x3^2)
+%       f4(x)= 1-x3
+%       f5(x)= (10)^.5 * (x2+x4-2)
+%       f6(x)= (10)^(-.5) * (x2-x4)% *********************************************
 
 */
 
@@ -101,7 +97,9 @@ int main()
 	display(f1);
 	display(f2);
 	display(f3);
-	display(f4);  
+	display(f4);
+	display(f5);
+	display(f6);  
   
     	return 0;
 }

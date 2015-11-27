@@ -1,0 +1,92 @@
+//rosex.cpp
+/*
+% Extended Rosenbrock function 
+% ---------------------------- 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dimensions -> n=variable but even, m=n 
+% Problem no. 21            
+% Standard starting point -> x=(s(j)) where 
+%                            s(2*j-1)=-1.2, 
+%                            s(2*j)=1 
+% Minima -> f=0 at (1,.....,1)  
+% **********************************************
+%{
+*/
+#include <iostream>
+#include <vector>
+#include <iomanip> 
+#include <cmath> 
+#include "valder.h"
+using namespace std;
+
+void derMaker(double der[], int pos, int size);
+
+
+int main()
+{
+	int m,n;
+	double val;  
+	
+	
+	cout<<"Enter value for n:";
+      	cin >> n;
+	m = n;
+	
+	valder a[n+1];	
+	double der[n];
+	
+	cout<<"enter values for "<< n <<" variables :";
+	for(int i = 1; i <= n; i++)
+	{
+		cin >> val;
+		a[i].val = val; 
+		derMaker(der,i,n);
+		a[i].der= vector<double>(der, der + sizeof(der) / sizeof(der[0]) );
+		
+	}
+
+      	valder t1[n+1],t2[n+1],f[n+1];
+
+	
+	cout<<m/2<<endl;
+	for(int i=1; i <= m/2; i++)
+	{
+	
+		t1[i] = pow(a[2*i-1],2);
+		t2[i] = a[2*i]-t1[i];
+		f[2*i-1] = 10*t2[i];
+		f[2*i] = 1-a[2*i-1];
+			
+	}
+
+	
+	
+   
+	cout<<"F :"<<endl;
+	for(int i = 1; i <= m; i++)
+	      	cout<<f[i].val<<endl;
+	
+      	cout<<endl<<"J: "<<endl;
+
+      	for(int i = 1; i <= m; i++)
+	{	
+		for(int j=0; j<f[i].der.size(); j++ )
+		{	cout<<setw(15) << left<<f[i].der[j]<<" ";
+		}
+	     	cout<< endl;
+	}      
+  
+    	return 0;
+}
+
+void derMaker(double der[], int pos,int size)
+{
+	for(int i = 0; i < size ; i++)
+	{
+		if(i == pos-1)
+			der[i] = 1;
+		else 
+			der[i] = 0;
+		
+	}
+}

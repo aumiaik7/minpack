@@ -45,7 +45,7 @@ int main()
 	}
 	a[n+1].val = 0;
 	derMaker(der,n+1,n);//all pos will be 0;
-	a[n+2].der= vector<double>(der, der + sizeof(der) / sizeof(der[0]) );
+	a[n+1].der= vector<double>(der, der + sizeof(der) / sizeof(der[0]) );
 
       	valder v1[m+1],v2[m+1],v3[m+1],v4[m+1],v5[m+1],v6[m+1],f[m+1];	
 	

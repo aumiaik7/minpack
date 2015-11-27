@@ -64,7 +64,7 @@ if((opt<1)|(opt>3))
        disp('ERRROR: option value sent to GULF.M is either <1 or >3');
 end;
 %}
-function [fvec,J] = gulf(m,a)	zero = 0.d0;
+function [fvec,J] = gulf1(m,a)	zero = 0.d0;
 	one = 1.d0;
 	point1 = .01d0;
 	twnty5 = 25.d0; 
@@ -86,9 +86,9 @@ function [fvec,J] = gulf(m,a)	zero = 0.d0;
 	y2(i) = fifty*y1(i);
 	y3(i) = y2(i)^ two3rd;
         y(i)  = twnty5 + y3(i);
-        a(i)  = y(i) - x2;
-	a1(i) = abs(a(i));
-	a2(i) = a1(i)^x3;
+        a1(i)  = y(i) - x2;
+	a11(i) = abs(a1(i));
+	a2(i) = a11(i)^x3;
 	a3(i) = a2(i)/x1;
 	a4(i) = -a3(i);
 	a5(i) = exp(a4(i));

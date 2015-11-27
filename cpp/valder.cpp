@@ -353,7 +353,7 @@ valder cos(valder u)
    for(int i = 0; i < u.der.size(); i++)
    {
       w.der[i] = -sin(u.val)*u.der[i] ;
-      cout<<-sin(u.val)<<" "<<u.der[i]<<endl;
+      // cout<<-sin(u.val)<<" "<<u.der[i]<<endl;
    }
 
    return w;

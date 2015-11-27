@@ -1,4 +1,4 @@
-function [fvec,J] = meyer(n,m,x,opt)
+%function [fvec,J] = meyer(n,m,x,opt)
 
 % ************************************************
 % ************************************************             
@@ -77,7 +77,6 @@ J
      else
         disp('Error: Option value sent to MEYER.M is either <1 or >3');
      end;
-
 %}
 function [fvec,J] = meyer(a)
 
@@ -117,4 +116,3 @@ for i = 1: 16
 end;
 F = values(:,1)
 J = values(:,2:4)
-

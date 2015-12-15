@@ -13,7 +13,7 @@
 %                                     
 % 11/21/94 by Madhu Lamba  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%{
+
 function [fvec,J] = singx(n,m,x,option)  
 
 J=zeros(m,n);
@@ -44,24 +44,5 @@ if (option==1 | option==3)
    fvec=fvec';
 else fvec='?';
 end;
-%}
-function [fvec,J] = singx1(n,a)
 
-five=sqrt(5);
-ten=sqrt(10);
-for i=1:n
-	x(i)=a(i);
-end
-for i=1:m/4
-	v1(i)=10*(x(4*i-2));
-        fvec(4*i-3)=x(4*i-3)+v1(i);
-	v2(i)=(x(4*i-1)-x(4*i));
-        fvec(4*i-2)=five*v2(i);
-	v3(i)=2*(x(4*i-1));
-	v4(i)=x(4*i-2)-v3(i);
-        fvec(4*i-1)=(v4(i))^2;
-	v5(i)=x(4*i-3)-x(4*i);
-	v6(i)=(v5(i))^2;
-        fvec(4*i)  =ten*v6(i);
-end  
-fvec=fvec'
+%

@@ -11,7 +11,7 @@
 %                                     
 % 11/21/94 by Madhu Lamba  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%{
+
 function [fvec,J] = pen1(n,m,x,option)  
 
 J=zeros(m,n);
@@ -47,20 +47,6 @@ end;
 if (option==1 | option==3)
    fvec=fvec';
 end;
-%}
-function [fvec,J] = pen11(n,a)
-m=n+1;
-for i=1:n
-	   x(i)=a(i);
-	end
-sa=sqrt(1.e-5);
-	sum=0;
-for i=1:n
-	v1(i)=x(i)-1;
-        fvec(i)=sa*v1(i);
-	v2(i)=x(i)^2;
-	v3(i)=sum(i)+v2(i);
-       sum(i)=v3(i);
-   end;
-   fvec(n+1)=sum-(1/4);
-fvec=fvec'
+
+%
+

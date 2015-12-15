@@ -1,4 +1,4 @@
-%function [fvec,J]  =  osb1(n,m,x,option)
+function [fvec,J]  =  osb1(n,m,x,option)
 
 % *******************************************************
 % function [fvec,J] = osb1(n,m,x,option)
@@ -13,14 +13,14 @@
 %
 % Revised  11/94                PLK
 % *******************************************************
-function [fvec,J]  =  osb11(a)
+
      % global FIRSTIME y1;
-values=zeros(33,6);
-        x1=valder(a(1),[1 0 0 0 0]);
-	x2=valder(a(2),[0 1 0 0 0]);
-	x3=valder(a(3),[0 0 1 0 0]);
-	x4=valder(a(4),[0 0 0 1 0]);
-        x5=valder(a(5),[0 0 0 0 1]);
+
+      x1 = x(1);
+      x2 = x(2);
+      x3 = x(3);
+      x4 = x(4);
+      x5 = x(5);
 
 %if (FIRSTIME),y1=[];
       y1( 1) = 0.844d0;
@@ -59,7 +59,7 @@ values=zeros(33,6);
       y1 = y1';
      % FIRSTIME=0;
      %end;
-%{
+
       im1 = 0.0d0;
       for i = 1: m
         ti   =  im1*10.d0;
@@ -82,25 +82,8 @@ values=zeros(33,6);
         im1 = i;
       end
       fvec = fvec';
-J
+
 
 % x0 = [.5,1.5,-1,.01,.02]';
-%}
-im1 = 0.0d0;
-      for i = 1: 33
-        t(i)   =  im1*10.d0;
-	e1(i) = -t(i);
-	e2(i) = e1(i)*x4;
-        e3(i) = exp(e2(i));
-	e4(i) = e1(i)*x5;
-        e5(i) = exp(e4(i));
-        t2(i) = x2*e3(i);
-        t3(i) = x3*e5(i);
-	t4(i) = t2(i)+t3(i);
-	t5(i) = x1+t4(i);
-	f(i) = y1(i)-t5(i);
-          %fvec(i) = (x1 + t2 + t3) - y1(i);
-	values(i,:) = [double(f(i))];
-        im1 = i;
-      end        F = values(:,1)
-J = values(:,2:6)
+%
+        

@@ -15,15 +15,15 @@ for i=1:n
         cx(i)  = cos(x1(i));
         sum1  = sum1 + cx(i);
 end
-	v=n-sum1;
       for i=1:n
         x1(i)   = x(i);
         cx(i)  = cos(x1(i));
      	v1(i) = one - cx(i);
 	v2(i) = i*v1(i);
 	sx(i) = sin(x1(i));
-	v3(i) = v+v2(i);
-        f(i)=v3(i)-sx(i);
+	v3(i) = v2(i)-sx(i);
+        v4(i) = n + v3(i);
+        f(i)=v4(i)-sum1;
 	values(i,:) = [double(f(i))]
       end
 F = values(:,1)

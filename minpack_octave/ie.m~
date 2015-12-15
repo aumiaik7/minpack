@@ -67,6 +67,7 @@ for i=1:n
    t(i)=i*h;
 end;
 sum1=0;
+sum2=0;
 vect=zeros(1,n);
 values=zeros(n,n+1);
 for i=1:n
@@ -82,7 +83,7 @@ for i=1:n
 	v4(i)=t(i)*v3(i);
         sum1=sum1+v4(i);
 
-        sum2=valder(0,vect);
+        sum2=0;
         if (n>i) 
           for j=i+1:n
 	      u1(j)=x(j)+t(j);

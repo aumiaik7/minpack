@@ -72,7 +72,6 @@ for i=1:m/4
 	values((4*i-1),:) = [double(f(4*i-1))]
 	values((4*i),:) = [double(f(4*i))]	
 end
-end
 F = values(:,1)
 J = values(:,2:n+1)
 

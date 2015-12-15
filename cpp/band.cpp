@@ -1,0 +1,110 @@
+//band.cpp
+/*
+% **********************************************
+
+*/
+#include <iostream>
+#include <vector>
+#include <iomanip> 
+#include <cmath> 
+#include <algorithm> 
+#include "valder.h"
+using namespace std;
+
+void derMaker(double der[], int pos, int size);
+//int max( int a, int b);
+//int min( int a, int b);
+
+
+int main()
+{
+	int m,n,ml,mu,lb,lu;
+	double val;  
+	
+	
+	cout<<"Enter value for n:";
+      	cin >> n;
+	m=n;
+	ml = 5;
+	mu = 1;
+	valder a[n+1];	
+	double der[n];
+	
+	cout<<"enter values for "<< n <<" variables :";
+
+	for(int i = 1; i <= n; i++)
+	{
+		cin >> val;
+		a[i].val = val; 
+		derMaker(der,i,n);
+		a[i].der= vector<double>(der, der + sizeof(der) / sizeof(der[0]) );
+		
+	}
+
+      	valder sum1,v[m+1],v1[m+1],v2[m+1],v3[m+1],v4[m+1],v5[m+1],v6[m+1],f[m+1];
+
+	
+	
+	
+
+	
+		
+	sum1.val = 0.0;
+	derMaker(der,n+1,n);//all pos will be 0;
+	sum1.der = vector<double>(der, der + sizeof(der) / sizeof(der[0]) );
+	for(int i=1; i<=m ;i++)
+	{
+		lb = max(1,i-ml);
+		lu = min(n,i+mu);
+	
+         
+		for(int j=1; j<=m; j++)
+		{
+		      if (j != i)
+		      {
+			if((j>=lb)&(j<=lu))
+			{
+				v1[j] = 1+a[j];
+				v2[j] = a[j]*v1[j];
+				sum1 = sum1 + v2[j];
+			}
+		      }
+		 }
+		v[i] = pow(a[i],2);
+		v3[i] = 5*v[i];
+		v4[i] = 2+v3[i];
+		v5[i] = a[i]*v4[i];
+		v6[i] = v5[i]+1;
+		f[i] = v6[i]-sum1;
+	}
+        
+
+	   
+	cout<<"F :"<<endl;
+	for(int i = 1; i <= m; i++)
+	      	cout<<f[i].val<<endl;
+	
+      	cout<<endl<<"J: "<<endl;
+
+      	for(int i = 1; i <= m; i++)
+	{	
+		for(int j=0; j<f[i].der.size(); j++ )
+		{	cout<<setw(15) << left<<f[i].der[j]<<" ";
+		}
+	     	cout<< endl;
+	}      
+  
+    	return 0;
+}
+
+void derMaker(double der[], int pos,int size)
+{
+	for(int i = 0; i < size ; i++)
+	{
+		if(i == pos-1)
+			der[i] = 1;
+		else 
+			der[i] = 0;
+		
+	}
+}

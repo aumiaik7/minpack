@@ -10,7 +10,7 @@
 %                                     
 % 12/4/94 by Madhu Lamba  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%{
+
 function [fvec,J] = ie(n,m,x,option)  
 
 J=zeros(n,m);
@@ -42,7 +42,7 @@ for i=1:n
     else fvec='?';
    end;
 
-   if (option==2 | option==3
+   if (option==2 | option==3)
       for j=1:n
          if (j<i)
             J(i,j)=3*h/2*(1-t(i))*t(j)*(x(j)+t(j)+1)^2;
@@ -59,48 +59,6 @@ if (option==1 | option==3)
    fvec=fvec';
 else fvec='?';
 end;
-%}
-function [fvec,J] = ie(n,a)
-m=n;
-h=1/(n+1);
-for i=1:n
-   t(i)=i*h;
-end;
-sum1=0;
-vect=zeros(1,n);
-values=zeros(n,n+1);
-for i=1:n
-	vect(:,i)=1;
-	x(i)=valder(a(i),vect);
-	vect=zeros(1,n);
-end
-x(n+1)=valder(0,vect);
-for i=1:n
-	v1(i)=x(i)+t(i);
-	v2(i)=v1(i)+1;
-	v3(i)=v2(i)^3;
-	v4(i)=t(i)*v3(i);
-        sum1=sum1+v4(i);
 
-        sum2=valder(0,vect);
-        if (n>i) 
-          for j=i+1:n
-	      u1(j)=x(j)+t(j);
-	      u2(j)=u1(j)+1;
-	      u3(j)=u2(j)^3;
-	      u4(j)=1-t(j);
-	      u5(j)=u4(j)*u3(j);
-              sum2=sum2+u5(j);
-          end;
-        end;
-	s1(i)=1-t(i);
-	s2(i)=s1(i)*sum1;
-	s3(i)=t(i)*sum2;
-	s4(i)=s2(i)+s3(i);
-	s5(i)=s4(i)/2;
-	s6(i)=h*s5(i);
-        f(i)=x(i)+s6(i);
-	values(i,:) = [double(f(i))]
-end
-F = values(:,1)
-J = values(:,2:n+1)
+%
+

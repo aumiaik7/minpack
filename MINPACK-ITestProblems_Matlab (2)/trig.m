@@ -9,7 +9,7 @@
 %                                     
 % 11/21/94 by Madhu Lamba  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%{
+
 function [fvec,J] = trig(n,m,x,option)  
 
   zero=0.d0;
@@ -55,31 +55,8 @@ function [fvec,J] = trig(n,m,x,option)
         %for i=1:n
         %  J( i, j) = sxj;
         % end
-        J(j, j) =  (j+1)*sxj - cos(xj);
+        J(j, j) =  (j+1)*sxj - cos(xj)
       end
 
   else error('Error: trig.m : invalid option')
   end
-%}
-function [fvec,J] = trig1(n,a)  
-m=n;
-  zero=0.d0;
-  one=1.d0;
-     for i=1:n
-	   x(i)=a(i);
-	end
-      sum1 = zero;
-      for i=1:n
-        x1(i)   = x(i);
-        cx(i)  = cos(x1(i));
-        sum1  = sum1 + cx(i);
-	v1(i) = one - cx(i);
-	v2(i) = i*v1(i);
-	sx(i) = sin(x1(i));
-	v3(i) = v2(i)-sx(i);
-        fvec(i) = n + v3(i);
-	f(i)=fvec(i)-sum1;
-      end
-     % fvec=fvec-sum1;
- f=f'
-   

@@ -10,7 +10,7 @@
 %                                     
 % 11/21/94 by Madhu Lamba  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%{
+
 function [fvec,J] = vardim(n,m,x,option)  
 
 J=zeros(m,n);
@@ -49,30 +49,6 @@ if (option==1 | option==3)
    fvec=fvec';
 else fvec='?';
 end;
-%}
-function [fvec,J] = vardim2(n,a)
-m=n+2;
-vect=zeros(1,n);
-values=zeros(m,n+1);
-for i=1:n
-	vect(:,i)=1;
-	x(i)=valder(a(i),vect);
-	vect=zeros(1,n);
-end
-for i=1:n
-        f(i)=x(i)-1;
-	values((i),:) = [double(f(i))];
-end 
 
-var_1=0;
-for j=1:n
-	v1(j)=x(j)-1;
-	v2(j)=j*v1(j);
-    var_1=var_1+v2(j);
-end;
-        fvec(n+1)=var_1;
-        fvec(n+2)=(var_1)^2;
-
-F = values(:,1)
-J = values(:,2:n+1)
+%
 

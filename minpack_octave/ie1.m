@@ -42,7 +42,7 @@ for i=1:n
     else fvec='?';
    end;
 
-   if (option==2 | option==3
+   if (option==2 | option==3)
       for j=1:n
          if (j<i)
             J(i,j)=3*h/2*(1-t(i))*t(j)*(x(j)+t(j)+1)^2;
@@ -60,29 +60,28 @@ if (option==1 | option==3)
 else fvec='?';
 end;
 %}
-function [fvec,J] = ie(n,a)
+function [fvec,J] = ie1(n,a)
 m=n;
+	for i=1:n
+	   x(i)=a(i);
+	end
 h=1/(n+1);
 for i=1:n
    t(i)=i*h;
 end;
+
 sum1=0;
-vect=zeros(1,n);
-values=zeros(n,n+1);
+sum2=0;
 for i=1:n
-	vect(:,i)=1;
-	x(i)=valder(a(i),vect);
-	vect=zeros(1,n);
-end
-x(n+1)=valder(0,vect);
-for i=1:n
+        x(n+1)=0;
+
 	v1(i)=x(i)+t(i);
 	v2(i)=v1(i)+1;
 	v3(i)=v2(i)^3;
 	v4(i)=t(i)*v3(i);
         sum1=sum1+v4(i);
 
-        sum2=valder(0,vect);
+        sum2=0;
         if (n>i) 
           for j=i+1:n
 	      u1(j)=x(j)+t(j);
@@ -99,8 +98,5 @@ for i=1:n
 	s4(i)=s2(i)+s3(i);
 	s5(i)=s4(i)/2;
 	s6(i)=h*s5(i);
-        f(i)=x(i)+s6(i);
-	values(i,:) = [double(f(i))]
-end
-F = values(:,1)
-J = values(:,2:n+1)
+        fvec(i)=x(i)+s6(i);
+   end;fvec=fvec'

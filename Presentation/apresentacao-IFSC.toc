@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.19pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Listas}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Blocos}{5}{0}{1}

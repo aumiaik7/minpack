@@ -1,3 +1,19 @@
+Skip to content
+This repository  
+Search
+Pull requests
+Issues
+Gist
+ @aumiaik7
+ Unwatch 1
+  Star 0
+  Fork 0 aumiaik7/minpack
+ Code  Issues 0  Pull requests 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathminpack/cpp/helix.cpp
+a170c9f  21 days ago
+@aumiaik7 aumiaik7 till 19
+1 contributor
+RawBlameHistory     98 lines (77 sloc)  1.89 KB
 //helix.cpp
 
 /*
@@ -16,7 +32,6 @@
 %
 % Revised 10/23/94   PLK
 % *********************************************
-
 */
 
 #include <iostream>
@@ -95,3 +110,5 @@ int main()
   
     	return 0;
 }
+Status API Training Shop Blog About Pricing
+© 2015 GitHub, Inc. Terms Privacy Security Contact Help

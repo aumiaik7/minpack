@@ -1,0 +1,358 @@
+\documentclass[10pt]{beamer}
+\setbeamerfont{structure}{family=\rmfamily} 
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{tabularx,listings}
+\lstset{
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\color{green}
+}
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]
+\usetheme{default} 
+\usecolortheme{seahorse}
+\mode<presentation>
+{
+   \setbeamercovered{transparent}
+   \setbeamertemplate{items}[ball]
+   \setbeamertemplate{theorems}[numbered]
+   \setbeamertemplate{footline}[frame number]
+
+}
+
+
+
+\newsavebox{\codebox}% Used to store listings/code
+\newsavebox{\codeboxI}% Used to store listings/code
+\begin{document}
+\title {\bfseries{\sc Algorithmic Differentiation Term Project Presentation}}
+\author[Ahamad Imtiaz Khan]{\small {Ahamad Imtiaz Khan\\MSc Student\\ID:001188188}}
+\institute{
+% commented by KK (put image if you want)
+%\includegraphics[scale=.08]{Amrita.jpg}\medskip\\ 
+\sc{Department of Mathematics and Computer Science }\\   \medskip \sc{\small University of Lethbridge}}
+\date{\small 18th December, 2015} 
+
+
+
+
+%--------------------------------------------------------------------------%
+\begin{frame}
+\titlepage
+\end{frame}
+%---------------------------------------------------------------------------%
+\section*{OUTLINE}
+\begin{frame}
+\frametitle{OUTLINE}  
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------------------------
+
+\section{Algorithmic Differentiation and other related methods}
+\begin{frame}
+\frametitle{Algorithmic Differentiation and other related methods}
+\begin{itemize}
+\item Algorithmic differentiation is a method to compute derivatives.\\
+\item Derivative is rate of change of any quantity. 
+\item There are other methods for computing derivatives like:
+\begin{itemize}
+\item Symbolic Differentiation
+\item Numerical differentiation using difference quotients
+\end{itemize}
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Problems with other methods}
+\begin{itemize}
+\item Symbolic Differentiation:
+\begin{itemize}
+\item When we work with number in computer symbolic differentiation is not a choice.
+\end{itemize}
+\item Numerical differentiation using difference quotients:
+\begin{itemize}
+\item This method incurs truncation error.
+
+ $\frac{df}{dx} = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}$
+
+We get this from Taylor expansion:
+ $f(x + h) = f(x) + hf'(x) + \frac{h^2}{2!}f''(x) + \frac{h^3}{3!}f'''(x) + \cdots$\\
+We ignore the terms $ \frac{h^2}{2!}f''(x) + \frac{h^3}{3!}f'''(x) + \cdots$ and get\\
+
+$f'(x) = \frac{f(x+h) - f(x)}{h}$
+
+\end{itemize}
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{Algorithmic Differentiation}
+\begin{itemize}
+\item In algorithmic differentiation we use exact equations to calculate derivatives so it does not involve with any truncation or cancellation error.
+\item In AD we form an evaluation trace of a mathematical equation. Evaluation trace contains a sequence of mathematical variable definitions.
+\item No variable is assigned value more than once and not more than one operator is used in right hand side of the assignment.
+\item Then we compute derivative using one of the two modes of AD
+\begin{itemize}
+\item Forward mode AD
+\item Reverse mode AD
+\end{itemize}
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------------%
+
+\section{Project Works}
+\begin{frame}
+\frametitle{Projects}
+\begin{itemize}
+\item Implement a subset of MINPACK benchmark problems using Neidinger valder algorithmic differentiation package to compute their Jacobian.
+\item Extend Neidinger valder algorithmic differentiation package to incorporate reverse accumulation.
+
+\end{itemize}
+\end{frame}
+%-------------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Implementation of MINPACK benchmark problems}
+\begin{itemize}
+\item  We implemented the set of MINPACK benchmark problems using  Neidinger valder algorithmic differentiation package.
+\item The MINPACK benchmark problems we got gives their Jacobian as output but they implicitly calculated the derivatives.
+\item Our task was to implement valder AD package so that we will not need to compute derivatives in computing Jacobian.
+
+\end{itemize}
+\end{frame}
+%-------------------------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{Implementation of valder Package in C++}
+\begin{itemize}
+\item  Valder AD package is already implemented in MATLAB/Octave.
+\item I implemented it using C++ programming language. Neidinger used OOP with operator overloading. I implemented the Neidinger valder package in C++ using OOP. Operator and function overloading was used in valder.cpp class.
+
+\end{itemize}
+\end{frame}
+%-------------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Methods of valder.cpp class}
+\begin{columns}[T] % align columns
+\begin{column}{.52\textwidth}
+\color{black}\rule{\linewidth}{4pt}
+
+valder operator+(valder u, valder v);\\
+valder operator+(valder u, double v);\\
+valder operator+(double u, valder v);\\
+valder operator-(valder u);\\
+valder operator-(valder u, valder v);\\
+valder operator-(valder u, double v);\\
+valder operator-(double u ,valder v);\\
+valder operator*(valder u, valder v);\\
+valder operator*(valder u, double v);\\
+valder operator*(double u, valder v);\\
+valder operator/(valder u, valder v);\\
+valder operator/(valder u, double v);\\
+valder operator/(valder u, double v);\\
+valder operator/(double u, valder v);\\
+\end{column}%
+\hfill%
+\begin{column}{.48\textwidth}
+\color{blue}\rule{\linewidth}{4pt}
+
+valder pow(valder u, valder v);\\
+valder pow(valder u, double v);\\
+valder pow(double u, valder v);\\
+valder exp(valder u);\\
+valder log(valder u);\\
+valder sqrt(valder u);\\
+valder sin(valder u);\\
+valder cos(valder u);\\
+valder tan(valder u);\\
+valder asin(valder u);\\
+valder atan(valder u);\\
+valder abs(valder u);\\
+\end{column}%
+\end{columns}
+\end{frame}
+%-------------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{ Test functions in SSA form}
+\begin{itemize}
+\item In Static single assignment form each variable is assigned exactly once. 
+\item Every variable is defined before it is used.
+\item  We converted the test functions of MINPACK benchmark problems. For Example Helical valley function
+\item
+\begin{enumerate} [align=left,style=nextline,leftmargin=1.5cm,labelsep=\parindent,font=\normalfont]
+$f_1(x) = 10[x_3 - 10\theta(x_1,x_2)]$\\
+$f_2(x) = 10[({x_1^2 + x_2^2})^{1/2} -1]$\\
+$f_3(x) = x_3$\\
+\linebreak
+\newpage
+where\\
+ $\theta(x_1,x_2) =
+  \begin{cases}
+    \frac{1}{2\pi}arctan \big(\frac{x_2}{x_1}\big)       & \quad \text{if } x_1>0 \\
+    \frac{1}{2\pi}arctan \big(\frac{x_2}{x_1}\big)+0.5       & \quad \text{if } x_1<0 \\
+  \end{cases}
+$
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%-------------------------------------------------------------------------------%
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+//read x1,x2 and x3	
+v_2 = x1;
+v_1 = x2;
+v0 = x3;		
+v1 = v_1/v_2;
+v2 = atan(v1);
+v3 = p*v2;
+v4 = v3+0.5;
+if(x1 > 0)
+{
+	v5 = 10*v3;
+	v6 = v0-v5;
+	f1 = 10*v6;
+}
+\end{lstlisting}
+\end{lrbox}
+
+\begin{lrbox}{\codeboxI}
+\begin{lstlisting}
+if(x1 < 0)
+{
+	v7 = 10*v4;
+	v8 = v0-v7;
+	f1 = 10*v8;
+}
+v9 = pow(v_2,2);
+v10 = pow(v_1,2);
+v11 = v9+v10;
+v12 = sqrt(v11);
+v13 = v12-1;
+f2 = 10*v13;
+f3 = v0;
+\end{lstlisting}
+\end{lrbox}
+\begin{frame}
+\frametitle{ Test functions in SSA form}
+  \begin{tabularx}{\linewidth}{X|X}
+  \usebox{\codebox}
+  &
+  \usebox{\codeboxI}
+  \end{tabularx}
+\end{frame}
+
+%---------------------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{Implementation of MINPACK benchmark problems}
+\begin{itemize}
+\item The variables such as v\textunderscore2, v\textunderscore1, v0 etc. are actually valder class objects.
+\item  At each assignment the corresponding overloaded function is called and value and derivatives are calculated.
+\item At final assignment we got function value and gradient vectors in f1, f2 and f3 object.
+\item From the gradient vectors we got Jacobian of these functions.
+\item We converted the test functions of MINPACK benchmark problems similar ways and using valder.cpp class calculated the derivatives and finally got Jacobian matrix for the test functions.
+
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{Extending Neidinger valder algorithmic differentiation package to incorporate reverse accumulation}
+\begin{itemize}
+\item Neidinger implemented forward mode AD using MATLAB/Octave.
+\item We had to change this valder.m package for implementing reverse mode AD.
+\item In reverse mode AD there are two passes.\begin{itemize}
+\item  Forward pass
+\item Reverse pass
+\end{itemize} 
+
+
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------------%
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+
+function h = mtimes(u,v)
+ sprintf('**mtimes**');
+ %VALDER/MTIMES overloads multiplication * with at  
+ %least one valder object argument
+ if ~isa(u,'valder') %u is a scalar
+  h = valder(u*v.val, u*v.der);
+  elseif ~isa(v,'valder') %v is a scalar
+  h = valder(v*u.val, v*u.der);
+ else
+  h = valder(u.val*v.val, u.der*v.val + u.val*v.der);
+ end
+end      
+\end{lstlisting}
+\end{lrbox}
+
+\begin{frame}
+\frametitle{Forward Pass}
+\begin{itemize}
+\item In forward pass  we calculated immediate partial derivative. valder.m does not calculate immediate partial derivatives. So we had to change valder.m package so that it can calculate immediate partial derivative.
+
+  \usebox{\codebox}
+ 
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------------%
+
+\begin{lrbox}{\codebox}
+\begin{lstlisting}
+
+ function h = mtimes(u,v)
+  sprintf('**mtimes**');
+  %VALDER/MTIMES overloads multiplication * with at  
+  %least one valder object argument 
+  if ~isa(u,'valder') %u is a scalar
+ 	h = valder(u*v.val, [0 u 0 v.pos]);
+  elseif ~isa(v,'valder') %v is a scalar
+    h = valder(v*u.val, [v 0 u.pos 0]);
+  else
+    h = valder(u.val*v.val, [v.val u.val u.pos v.pos]);
+  end
+ end 
+\end{lstlisting}
+\end{lrbox}
+
+\begin{frame}
+\frametitle{Forward Pass}
+\begin{itemize}
+\item mtimes(u,v) funtion for reverse AD in valder.m
+
+  \usebox{\codebox}
+ 
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Reverse Pass}
+\begin{itemize}
+\item We formed an extended Jacobian matrix that stores the immediate partial derivatives.
+\item In forward pass when a row variable has an immediate dependency on column variable we saved the immediate partial derivative in that location.
+\item For tracking the dependency we had to assign position for each valder object.
+\item We formed an extended Jacobian matrix and from backward substitution which is reverse pass we got the derivatives. 
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------------%
+
+
+\begin{frame}
+\Large
+\begin{center}
+ \sc {Thank You } 
+\end{center}
+\end{frame}
+%---------------------------------------------------------------------------%
+\end{document}
+
